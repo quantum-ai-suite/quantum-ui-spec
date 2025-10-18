@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![QUIML Version](https://img.shields.io/badge/QUIML-v1.1-00AEEF) ![License](https://img.shields.io/badge/license-MIT-green) ![Platforms](https://img.shields.io/badge/platforms-Web%20%7C%20Mobile%20%7C%20Desktop-blue) ![Status](https://img.shields.io/badge/status-Beta-orange)
+![QUIML Version](https://img.shields.io/badge/QUIML-v1.1-00AEEF) ![License](https://img.shields.io/badge/license-MIT-green) ![Platforms](https://img.shields.io/badge/platforms-Web%20%7C%20Mobile%20%7C%20Desktop-blue) ![Status](https://img.shields.io/badge/status-Draft-orange)
 
 **The Universal UI Framework for AI-Driven Applications**
 
@@ -12,16 +12,20 @@
 
 ## Overview
 
-QUIML (Quantum User Interface Markup Language) is a declarative, cross-platform UI framework that enables developers to build modern, AI-driven interfaces using a single YAML-based syntax. Write once, deploy everywhere - from web browsers to native mobile apps to desktop applications.
+QUIML (Quantum User Interface Markup Language) is a declarative, extensible UI framework designed for creating futuristic, cross-platform user interfaces. Inspired by quantum-inspired innovation and aligned with the Quantum Suite ecosystem, QUIML provides a modern alternative to traditional UI languages like JavaFX FXML. It supports web (React), desktop (Qt/Tauri, JavaFX), mobile (Flutter, SwiftUI, Jetpack Compose), and multi-language controllers (JavaScript, Python, C++, Java). QUIML emphasizes modularity, AI integration, and dynamic styling, enabling developers to build responsive, interactive UIs with a professional aesthetic.
+
+As of October 18, 2025, QUIML is at version 1.1, featuring hybrid styling, a new "library" section for reusable assets (e.g., SVGs, images, icons), detailed syntax with pre-processor support, AI integration strategies, build-time prompt compilation, and expanded implementation packages.
 
 ### Key Features
 
-- **One Syntax, All Platforms** - Single YAML definition renders across React, Flutter, SwiftUI, and more
-- **AI-Native** - Built-in support for AI-generated UIs and dynamic content through prompt compilation
-- **Extensible** - Register custom components, behaviors, and styling options
-- **Performance First** - Optimized renderers for each platform's native capabilities
-- **Developer Friendly** - Human-readable YAML with powerful tooling and validation
-- **Enterprise Ready** - Part of the Quantum Suite business platform ecosystem
+- **Cross-Platform Compatibility**: Render the same QUIML file across Web (React v19.2), Desktop (Qt 6.10, JavaFX 25), Mobile (Flutter, SwiftUI, Jetpack Compose), and more.
+- **Multi-Language Controllers**: Support for JavaScript, Python, C++, and Java controllers with a unified interface.
+- **Extensibility**: User-defined attributes, behaviors, types, and custom registrations via APIs like `QUIML.registerType`.
+- **Hybrid Styling**: Inline attributes, top-level "style" sections (QUIML-CSS subset with variables, selectors, pseudo-selectors), and external CSS for portability and consistency.
+- **AI-Ready**: Integrates with WebSocket/GraphQL for real-time updates; supports AI-generated prompts for automated design and dynamic content.
+- **Asset Library**: New "library" section for defining and referencing reusable assets like SVGs, images, and icons.
+- **Canvas Module**: Extensible 2D/3D graphics support with primitives, operations, animations, and backend abstractions (e.g., WebGL/Three.js r172, Skia).
+- **Performance & Security**: Optimized parsers, safe YAML handling, sandboxed controllers, and integration with Quantum Suite tools like Quantum Watch and Quantum Security.
 
 ## Repository Structure
 
@@ -30,243 +34,110 @@ The Quantum UI ecosystem consists of multiple repositories, each serving a speci
 ```
 quantum-ai-suite/
 ├── quantum-ui-spec/          # You are here - Specifications & Documentation
-├── quantum-ui-react/         # React/Web implementation
-├── quantum-ui-flutter/       # Flutter implementation (iOS/Android)
-├── quantum-ui-swiftui/       # SwiftUI implementation (iOS/macOS)
-├── quantum-ui-android/       # Jetpack Compose implementation
-├── quantum-ui-qt/            # Qt implementation (C++ Desktop)
-├── quantum-ui-javafx/        # JavaFX implementation
-└── quantum-ui-examples/      # Example QUIML files and demos
+├── quantum-ui-js-react/      # JavaScript/React implementation (Web)
+├── quantum-ui-dart-flutter/  # Dart/Flutter implementation (iOS/Android/Web/Desktop)
+├── quantum-ui-swift-swiftui/ # Swift/SwiftUI implementation (iOS/macOS)
+├── quantum-ui-kotlin-compose # Kotlin/Jetpack Compose implementation (Android)
+├── quantum-ui-cpp-qt/        # C++/Qt implementation (Desktop cross-platform)
+├── quantum-ui-java-javafx/   # Java/JavaFX implementation (Desktop/Java environments)
+├── quantum-ui-python-pyqt/   # Python/PyQt implementation (Desktop cross-platform)
+├── quantum-ui-js-reactnative # JavaScript/React Native implementation (iOS/Android/Web)
+├── quantum-ui-csharp-maui/   # C#/.NET MAUI implementation (Windows/Android/iOS/macOS)
+├── quantum-ui-rust-slint/    # Rust/Slint implementation (Desktop/Mobile/Embedded)
+└── quantum-ui-examples/      # Example QUIML files, static/mobile demos, and Canvas usage
 ```
 
 ### How It Works
 
 ```mermaid
 graph LR
-    A[QUIML File<br/>.quiml] --> B[quantum-ui-spec<br/>Validation]
+    A[QUIML File<br/>.quiml] --> B[quantum-ui-spec<br/>Validation & Pre-Processing]
     B --> C{Platform<br/>Parser}
     C --> D[React<br/>Components]
     C --> E[Flutter<br/>Widgets]
     C --> F[SwiftUI<br/>Views]
-    C --> G[Other<br/>Platforms]
+    C --> G[Jetpack Compose<br/>UI]
+    C --> H[Qt<br/>Widgets/QML]
+    C --> I[JavaFX<br/>Nodes]
+    C --> J[Other<br/>Platforms]
 ```
 
-1. **Write** your UI in QUIML (YAML-based syntax)
-2. **Validate** against the specification (this repo)
-3. **Deploy** using platform-specific implementations
-4. **Render** native UI components on each platform
+1. **Write** your UI in QUIML (relaxed YAML syntax).
+2. **Pre-Process & Validate** using tools from this repo (handles inline mappings, quoting for specials like `#`).
+3. **Parse & Render** via platform-specific packages, merging hybrid styles and referencing libraries.
+4. **Extend** with AI prompts, custom types, or controllers for dynamic behavior.
 
 ## Repository Roles
 
 ### quantum-ui-spec (This Repository)
 
-**Purpose**: Central hub for specifications, documentation, and coordination
+**Purpose**: Central hub for specifications, documentation, and coordination. This is the primary repo for all QUIML-related discussions and changes.
 
-- **Specifications**: QUIML syntax definition, component schemas, API contracts
-- **Documentation**: Comprehensive guides, tutorials, and best practices
-- **Test Suites**: Compliance tests that all implementations must pass
-- **Tools**: Reference validator and preprocessor implementations
-- **Community**: Issues, discussions, and RFCs for the entire ecosystem
+- **Specifications**: Core QUIML syntax (v1.1), component schemas, API contracts, Canvas module, and extensibility details.
+- **Documentation**: Comprehensive guides, tutorials, best practices, and API references.
+- **Test Suites**: Compliance tests that all implementations must pass.
+- **Tools**: Reference validator, preprocessor (JavaScript/Python/Java implementations), and example scripts.
+- **Community**: Issues, discussions, RFCs, and roadmap for the entire ecosystem.
 
 **This is the only repository with:**
 
 - Wiki (comprehensive documentation)
-- Issues (for all UI-related bugs/features)
+- Issues (for all UI-related bugs/features across platforms)
 - Discussions (community forum)
 - Projects (roadmap tracking)
 
-### quantum-ui-react
-
-**Purpose**: Web implementation using React 19.2+
-
-- Renders QUIML to React components
-- Supports Canvas module for 2D/3D graphics (WebGL/Three.js)
-- Integrates with Next.js, Vite, and other React frameworks
-- NPM package: `@quantum-ui/react`
-
-### quantum-ui-flutter
-
-**Purpose**: Cross-platform mobile implementation
-
-- Native performance on iOS and Android
-- Supports all QUIML components and layouts
-- Material Design and Cupertino widget adaptation
-- Pub package: `quantum_ui_flutter`
-
-### quantum-ui-swiftui
-
-**Purpose**: Native Apple platform implementation
-
-- First-class SwiftUI integration
-- Optimized for iOS 15+ and macOS 12+
-- Native animations and gestures
-- Swift Package Manager support
-
-### quantum-ui-android
-
-**Purpose**: Native Android implementation using Jetpack Compose
-
-- Modern declarative Android UI
-- Material You (Material 3) support
-- Kotlin-first development
-- Maven package: `ai.quantumsuite:quantum-ui-android`
-
-### quantum-ui-qt
-
-**Purpose**: Cross-platform desktop implementation
-
-- C++ performance for desktop applications
-- Supports Windows, macOS, and Linux
-- Qt Widgets and QML backends
-- Conan/vcpkg package support
-
-### quantum-ui-javafx
-
-**Purpose**: JVM desktop implementation
-
-- Enterprise Java applications
-- FXML generation from QUIML
-- Spring Boot integration ready
-- Maven package: `ai.quantumsuite:quantum-ui-javafx`
-
-### quantum-ui-examples
-
-**Purpose**: Shared example files and demos
-
-- Complete QUIML examples for common use cases
-- Platform-specific showcase apps
-- Performance benchmarks
-- Tutorial projects
+Platform-specific repos focus solely on implementation code, dependencies, and build tools. All specs, examples, and coordination happen here.
 
 ## Getting Started
 
-### Quick Example
+### Installation
 
-```yaml
-# login-screen.quiml
-quiml: 1.1
-styles: dark-theme.css
-components:
-  - VerticalBox#mainLayout:
-      align: center
-      spacing: 20
-      style: { bg: #000000, padding: 40px }
-      components:
-        - Label#title:
-            text: "Welcome to Quantum Suite"
-            style: { fontSize: 24px, color: #00AEEF }
-        - TextField#username:
-            placeholder: "Username"
-            style: { bg: #333333, color: #FFFFFF }
-        - TextField#password:
-            placeholder: "Password"
-            secure: true
-        - Button#submit:
-            text: "Login"
-            style: { bg: #00AEEF, color: #000000 }
-            event: { onClick: LoginController.submit }
-```
-
-### Platform-Specific Setup
-
-<details> <summary>React/Web</summary>
+For development and validation tools:
 
 ```bash
-npm install @quantum-ui/react
+# Install global CLI tools (Node.js required for JS-based tools)
+npm install -g @quantum-ui/validator @quantum-ui/preprocessor
 
-# In your React app
-import { QUIMLRenderer } from '@quantum-ui/react';
-
-function App() {
-  return <QUIMLRenderer file="login-screen.quiml" />;
-}
+# Or use platform-specific packages (e.g., for Python)
+pip install quantum-ui-python-tools
 ```
 
-[Full React Documentation →](https://github.com/quantum-ai-suite/quantum-ui-react)
+For platform implementations, install via respective package managers (e.g., npm for React, pub for Flutter). See individual repos for details.
 
-</details> <details> <summary>Flutter</summary>
+### Writing a QUIML File
+
+Create a `.quiml` file with relaxed YAML syntax:
 
 ```yaml
-# pubspec.yaml
-dependencies:
-  quantum_ui_flutter: ^1.0.0
-import 'package:quantum_ui_flutter/quantum_ui_flutter.dart';
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return QUIMLApp(file: 'login-screen.quiml');
-  }
-}
+quiml: 1.1
+library:
+  - id: logo
+    type: image
+    src: quantum-logo.svg
+style:
+  :root { --qs-bg: #000000; --qs-accent: #00AEEF; }
+  Button { background-color: var(--qs-bg); color: var(--qs-accent); }
+components:
+  - VerticalBox#main:
+      components:
+        - Image#logo: { ref: logo, size: 50px }
+        - Button#action: { text: Get Started, style: { hover: { bg: #333333 } } }
+controllers:
+  - name: MainController
+    language: javascript
+    script: main.js
 ```
-
-[Full Flutter Documentation →](https://github.com/quantum-ai-suite/quantum-ui-flutter)
-
-</details> <details> <summary>SwiftUI</summary>
-
-```swift
-import QuantumUI
-
-struct ContentView: View {
-    var body: some View {
-        QUIMLView(file: "login-screen.quiml")
-    }
-}
-```
-
-[Full SwiftUI Documentation →](https://github.com/quantum-ai-suite/quantum-ui-swiftui)
-
-</details>
-
-## Documentation
-
-### Core Concepts
-
-- **[QUIML Syntax Guide](https://claude.ai/chat/wiki/QUIML-Syntax)** - Complete language reference
-- **[Component Catalog](https://claude.ai/chat/wiki/Components)** - All available components and properties
-- **[Layout System](https://claude.ai/chat/wiki/Layouts)** - Responsive layout patterns
-- **[Styling Guide](https://claude.ai/chat/wiki/Styling)** - Theming and customization
-- **[Data Binding](https://claude.ai/chat/wiki/Bindings)** - Dynamic data and state management
-- **[Animation System](https://claude.ai/chat/wiki/Animations)** - Built-in animation support
-- **[AI Integration](https://claude.ai/chat/wiki/AI-Integration)** - Using AI prompts for UI generation
-
-### Advanced Topics
-
-- **[Custom Components](https://claude.ai/chat/wiki/Custom-Components)** - Extending the framework
-- **[Canvas Module](https://claude.ai/chat/wiki/Canvas-Module)** - 2D/3D graphics support
-- **[Controller System](https://claude.ai/chat/wiki/Controllers)** - Multi-language business logic
-- **[Performance Optimization](https://claude.ai/chat/wiki/Performance)** - Best practices for production
-- **[Security Considerations](https://claude.ai/chat/wiki/Security)** - Safe YAML parsing and validation
-
-### Platform Guides
-
-- **[React Integration](https://claude.ai/chat/wiki/Platform-React)**
-- **[Flutter Integration](https://claude.ai/chat/wiki/Platform-Flutter)**
-- **[SwiftUI Integration](https://claude.ai/chat/wiki/Platform-SwiftUI)**
-- **[Android Integration](https://claude.ai/chat/wiki/Platform-Android)**
-- **[Desktop Integration](https://claude.ai/chat/wiki/Platform-Desktop)**
-
-## Development
 
 ### Validating QUIML Files
 
 ```bash
-# Install the validator
-npm install -g @quantum-ui/validator
-
 # Validate a QUIML file
-quiml-validate my-ui.quiml
-
-# Validate with schema version
 quiml-validate my-ui.quiml --schema=1.1
 ```
 
 ### Preprocessor for Relaxed Syntax
 
 ```bash
-# Install the preprocessor
-npm install -g @quantum-ui/preprocessor
-
 # Convert relaxed syntax to strict YAML
 quiml-preprocess input.quiml > output.yaml
 ```
@@ -280,74 +151,85 @@ All platform implementations must pass the compliance test suite:
 git clone https://github.com/quantum-ai-suite/quantum-ui-spec
 cd quantum-ui-spec
 
+# Install dependencies
+npm install
+
 # Run compliance tests
 npm test
 
-# Test specific platform implementation
-npm test -- --platform=react
+# Test specific platform implementation (requires linking to platform repo)
+npm test -- --platform=js-react
 ```
 
 ## Contributing
 
 We welcome contributions! However, please note:
 
-- **Issues**: File all issues in THIS repository (quantum-ui-spec), not in platform-specific repos
-- **Discussions**: Use the Discussions tab here for questions and ideas
-- **Platform Bugs**: Even platform-specific bugs should be reported here with appropriate labels
+- **Issues**: File all issues in THIS repository (quantum-ui-spec), not in platform-specific repos. Use labels for categorization.
+- **Discussions**: Use the Discussions tab here for questions, ideas, and feedback.
+- **Platform Bugs**: Report even platform-specific bugs here with appropriate labels (e.g., `platform:js-react`).
 - **Pull Requests**:
-  - Spec changes: Submit to quantum-ui-spec
-  - Implementation changes: Submit to the specific platform repo
-  - Examples: Submit to quantum-ui-examples
+  - Spec changes, docs, tools, or tests: Submit to quantum-ui-spec.
+  - Implementation changes: Submit to the specific platform repo.
+  - Examples: Submit to quantum-ui-examples.
 
 ### Issue Labels
 
 When filing issues, please use these labels:
 
 - `spec` - Specification changes or clarifications
-- `platform:react` - React implementation specific
-- `platform:flutter` - Flutter implementation specific
-- `platform:swiftui` - SwiftUI implementation specific
-- `platform:android` - Android implementation specific
-- `platform:qt` - Qt implementation specific
-- `platform:javafx` - JavaFX implementation specific
+- `platform:js-react` - React/Web implementation specific
+- `platform:dart-flutter` - Flutter implementation specific
+- `platform:swift-swiftui` - SwiftUI implementation specific
+- `platform:kotlin-compose` - Jetpack Compose implementation specific
+- `platform:cpp-qt` - Qt implementation specific
+- `platform:java-javafx` - JavaFX implementation specific
+- `platform:python-pyqt` - PyQt implementation specific
+- `platform:js-reactnative` - React Native implementation specific
+- `platform:csharp-maui` - .NET MAUI implementation specific
+- `platform:rust-slint` - Slint implementation specific
 - `bug` - Something isn't working
 - `enhancement` - New feature or request
 - `documentation` - Documentation improvements
+- `canvas` - Related to Canvas module (2D/3D graphics)
 
 ### Development Process
 
-1. **Propose** - Open an issue or discussion for significant changes
-2. **Discuss** - Get community feedback
-3. **RFC** - For major features, create an RFC in the wiki
-4. **Implement** - Create PR with tests and documentation
-5. **Review** - Maintainers review and provide feedback
-6. **Merge** - Changes merged and released
+1. **Propose** - Open an issue or discussion for significant changes.
+2. **Discuss** - Get community feedback.
+3. **RFC** - For major features, create an RFC in the wiki.
+4. **Implement** - Create PR with tests and documentation.
+5. **Review** - Maintainers review and provide feedback.
+6. **Merge** - Changes merged and released.
 
 ## Platform Feature Compatibility
 
-| Feature         | React | Flutter | SwiftUI | Android | Qt     | JavaFX |
-| --------------- | ----- | ------- | ------- | ------- | ------ | ------ |
-| Core Components | ✓     | ✓       | ✓       | ✓       | ✓      | ✓      |
-| Layouts         | ✓     | ✓       | ✓       | ✓       | ✓      | ✓      |
-| Animations      | ✓     | ✓       | ✓       | ✓       | In Dev | In Dev |
-| Data Binding    | ✓     | ✓       | ✓       | ✓       | ✓      | ✓      |
-| Canvas 2D       | ✓     | ✓       | In Dev  | In Dev  | In Dev | In Dev |
-| Canvas 3D       | ✓     | In Dev  | ✗       | ✗       | In Dev | ✗      |
-| AI Prompts      | ✓     | ✓       | ✓       | ✓       | ✓      | ✓      |
-| Hot Reload      | ✓     | ✓       | ✓       | ✓       | ✗      | ✗      |
+| Feature         | js-react | dart-flutter | swift-swiftui | kotlin-compose | cpp-qt | java-javafx | python-pyqt | js-reactnative | csharp-maui | rust-slint |
+| --------------- | -------- | ------------ | ------------- | -------------- | ------ | ----------- | ----------- | -------------- | ----------- | ---------- |
+| Core Components | ✓        | ✓            | ✓             | ✓              | ✓      | ✓           | ✓           | ✓              | ✓           | ✓          |
+| Layouts         | ✓        | ✓            | ✓             | ✓              | ✓      | ✓           | ✓           | ✓              | ✓           | ✓          |
+| Animations      | ✓        | ✓            | ✓             | ✓              | ✓      | ✓           | ✓           | ✓              | ✓           | ✓          |
+| Data Binding    | ✓        | ✓            | ✓             | ✓              | ✓      | ✓           | ✓           | ✓              | ✓           | ✓          |
+| Hybrid Styling  | ✓        | ✓            | ✓             | ✓              | ✓      | ✓           | ✓           | ✓              | ✓           | ✓          |
+| Asset Library   | ✓        | ✓            | ✓             | ✓              | ✓      | ✓           | ✓           | ✓              | ✓           | ✓          |
+| Canvas 2D       | ✓        | ✓            | ✓             | ✓              | ✓      | ✓           | ✓           | ✓              | ✓           | ✓          |
+| Canvas 3D       | ✓        | In Dev       | In Dev        | In Dev         | In Dev | In Dev      | In Dev      | In Dev         | In Dev      | In Dev     |
+| AI Prompts      | ✓        | ✓            | ✓             | ✓              | ✓      | ✓           | ✓           | ✓              | ✓           | ✓          |
+| Hot Reload      | ✓        | ✓            | ✓             | ✓              | ✗      | ✗           | ✗           | ✓              | ✗           | ✗          |
 
 ✓ Supported | In Dev = In Development | ✗ Not Supported
 
 ## Related Projects
 
-- **[Quantum Suite](https://quantumsuite.ai/)** - AI-powered business operating system
-- **[Quantum Business OS](https://github.com/quantum-ai-suite)** - Enterprise platform using QUIML
-- **[Quantum Asset Licensor](https://github.com/quantum-ai-suite)** - Licensing system for Quantum products
-- **[Quantum Watch](https://github.com/quantum-ai-suite)** - Network performance monitoring
+- **[Quantum Suite](https://quantumsuite.ai/)** - AI-powered business operating system integrating QUIML.
+- **[Quantum Business OS (QBOS)](https://github.com/quantum-ai-suite/qbos)** - Enterprise platform using QUIML for UIs.
+- **[Quantum Watch](https://github.com/quantum-ai-suite/quantum-watch)** - Network performance monitoring with QUIML dashboards.
+- **[Quantum Security](https://github.com/quantum-ai-suite/quantum-security)** - Security framework with QUIML-integrated access controls.
+- **[Quantum Asset Licensor (QAL)](https://github.com/quantum-ai-suite/qal)** - Licensing system for Quantum products.
 
 ## License
 
-This specification and reference implementation are licensed under the MIT License. See [LICENSE](https://claude.ai/chat/LICENSE) for details.
+This specification and reference tools are licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
 Individual platform implementations may have different licenses - check each repository for specifics.
 
@@ -360,8 +242,9 @@ QUIML draws inspiration from:
 - SwiftUI (Apple)
 - Flutter's widget system
 - React's component model
+- YAML-based declarative formats
 
-Special thanks to the open-source community and early adopters who helped shape this framework.
+Special thanks to the open-source community, xAI (Grok 4), and early adopters who helped shape this framework.
 
 ## Contact & Support
 
