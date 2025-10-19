@@ -34,16 +34,16 @@ The Quantum UI ecosystem consists of multiple repositories, each serving a speci
 ```
 quantum-ai-suite/
 ├── quantum-ui-spec/          # You are here - Specifications & Documentation
-├── quantum-ui-js-react/      # JavaScript/React implementation (Web)
-├── quantum-ui-dart-flutter/  # Dart/Flutter implementation (iOS/Android/Web/Desktop)
-├── quantum-ui-swift-swiftui/ # Swift/SwiftUI implementation (iOS/macOS)
-├── quantum-ui-kotlin-compose # Kotlin/Jetpack Compose implementation (Android)
-├── quantum-ui-cpp-qt/        # C++/Qt implementation (Desktop cross-platform)
-├── quantum-ui-java-javafx/   # Java/JavaFX implementation (Desktop/Java environments)
-├── quantum-ui-python-pyqt/   # Python/PyQt implementation (Desktop cross-platform)
-├── quantum-ui-js-reactnative # JavaScript/React Native implementation (iOS/Android/Web)
-├── quantum-ui-csharp-maui/   # C#/.NET MAUI implementation (Windows/Android/iOS/macOS)
-├── quantum-ui-rust-slint/    # Rust/Slint implementation (Desktop/Mobile/Embedded)
+├── quantum-ui-react/      # JavaScript/React implementation (Web)
+├── quantum-ui-flutter/  # Dart/Flutter implementation (iOS/Android/Web/Desktop)
+├── quantum-ui-swiftui/ # Swift/SwiftUI implementation (iOS/macOS)
+├── quantum-ui-compose # Kotlin/Jetpack Compose implementation (Android)
+├── quantum-ui-qt/        # C++/Qt implementation (Desktop cross-platform)
+├── quantum-ui-javafx/   # Java/JavaFX implementation (Desktop/Java environments)
+├── quantum-ui-pyqt/   # Python/PyQt implementation (Desktop cross-platform)
+├── quantum-ui-reactnative # JavaScript/React Native implementation (iOS/Android/Web)
+├── quantum-ui-maui/   # C#/.NET MAUI implementation (Windows/Android/iOS/macOS)
+├── quantum-ui-slint/    # Rust/Slint implementation (Desktop/Mobile/Embedded)
 └── quantum-ui-examples/      # Example QUIML files, static/mobile demos, and Canvas usage
 ```
 
