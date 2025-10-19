@@ -6,7 +6,7 @@
 
 **The Universal UI Framework for AI-Driven Applications**
 
-[Documentation](https://github.com/quantum-ai-suite/quantum-ui-spec/wiki) | [Issues](https://github.com/quantum-ai-suite/quantum-ui-spec/issues) | [Examples](https://github.com/quantum-ai-suite/quantum-ui-examples) | [Playground](https://quantumsuite.ai/playground)
+[Documentation](https://github.com/quantum-ai-suite/quantum-community-hub/wiki) | [Issues](https://github.com/quantum-ai-suite/quantum-community-hub/issues) | [Discussions](https://github.com/orgs/quantum-ai-suite/discussions)| [Examples](https://github.com/quantum-ai-suite/quantum-ui-examples) | [Playground](https://quantumsuite.ai/playground)
 
 </div>
 
